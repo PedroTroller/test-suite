@@ -47,6 +47,6 @@ class Size extends AbstractTest
      */
     public function getSentence()
     {
-        return 'Size type';
+        return 'File size';
     }
 }
