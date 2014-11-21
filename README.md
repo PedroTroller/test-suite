@@ -31,3 +31,17 @@ Then, just launch the `test-suite` command with the class of your factory as arg
 ```bash
 ./bin/test-suite MyNamespace/AdapterFactory
 ```
+
+##Result
+
+```txt
+File content: OKAY
+
+File mime type: OKAY
+
+File size: ERROR
+
+ Some errors
+
+File metadata: UNSUPPORTED
+```
