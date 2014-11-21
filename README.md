@@ -29,5 +29,5 @@ class MyFactory implements AdapterFactory
 Then, just launch the `test-suite` command with the class of your factory as argument.
 
 ```bash
-./bin/test-suite MyNamespace\AdapterFactory
+./bin/test-suite MyNamespace/AdapterFactory
 ```

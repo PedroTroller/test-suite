@@ -44,6 +44,7 @@ class RunCommand extends Command
     public function execute(InputInterface $input, OutputInterface $output)
     {
         $class = $input->getArgument('factory');
+        $class = str_replace('/', '\\', $class);
 
         if (false === class_exists($class)) {
 
@@ -52,7 +53,7 @@ class RunCommand extends Command
 
         $rfl = new \ReflectionClass($class);
 
-        if (0 < $rfl->getConstructor()->getNumberOfRequiredParameters()) {
+        if (null !== $rfl->getConstructor() && 0 < $rfl->getConstructor()->getNumberOfRequiredParameters()) {
 
             throw new \Exception('Can\'t instanciate adapter factory %s, constructor shouldn\'t need required parameters');
         }
@@ -73,6 +74,7 @@ class RunCommand extends Command
 
             $exit = true === $result ? $exit : 1;
         }
+        $output->writeln('');
 
         return $exit;
     }
@@ -88,7 +90,7 @@ class RunCommand extends Command
      */
     private function runTest(Test $test, Adapter $adapter, OutputInterface $output)
     {
-        $output->write(sprintf('<info>%s : </info>', $test->getSentence()));
+        $output->write(sprintf('<info>%s: </info>', $test->getSentence()));
 
         if (false === $test->supports($adapter)) {
             $output->writeln(sprintf('<bg=blue;fg=white> %s </bg=blue;fg=white>', 'UNSUPPORTED'));
@@ -98,13 +100,13 @@ class RunCommand extends Command
 
         try {
             $test->test($adapter);
-            $output->writeln(sprintf('<bg=green;fg=white> %s </bg=green;fg=white>', 'OKAY'));
+            $output->writeln(sprintf('<bg=green;fg=black> %s </bg=green;fg=black>', 'OKAY'));
 
             return true;
         } catch (FailureException $ex) {
             $output->writeln(sprintf('<error> %s </error>', 'ERROR'));
             $output->writeln('');
-            $output->writeln($ex->getMessage());
+            $output->writeln(sprintf('<fg=red> %s </fg=red>', $ex->getMessage()));
 
             return false;
         }
