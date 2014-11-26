@@ -16,13 +16,13 @@ interface Test
     /**
      * Test the adapter
      *
-     * @param Gaufrette\Core\Adapter $adapter
+     * @param Adapter $adapter
      *
      * @return void
      *
      * @throw Gaufrette\TestSuite\Exception\FailureException
      */
-    public function test(Adapter $adapter);
+    public function run(Adapter $adapter);
 
     /**
      * Get the sentence to display

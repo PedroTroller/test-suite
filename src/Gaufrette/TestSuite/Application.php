@@ -22,5 +22,4 @@ class Application extends BaseApplication
 
         parent::run($input, $output);
     }
-
 }

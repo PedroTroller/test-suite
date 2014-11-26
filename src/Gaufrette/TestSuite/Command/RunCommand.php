@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RunCommand extends Command
 {
     /**
-     * @var Regitry $tests
+     * @var Registry $tests
      */
     private $tests;
 
@@ -82,9 +82,9 @@ class RunCommand extends Command
     /**
      * Run a test and print it's result
      *
-     * @param Gaufrette\TestSuite\Suite\Test $test
-     * @param Gaufrette\Core\Adapter $adapter
-     * @param Symfony\Component\Console\Output\OutputInterface $output
+     * @param Test $test
+     * @param Adapter $adapter
+     * @param OutputInterface $output
      *
      * @return boolean
      */
@@ -99,7 +99,7 @@ class RunCommand extends Command
         }
 
         try {
-            $test->test($adapter);
+            $test->run($adapter);
             $output->writeln(sprintf('<bg=green;fg=black> %s </bg=green;fg=black>', 'OKAY'));
 
             return true;

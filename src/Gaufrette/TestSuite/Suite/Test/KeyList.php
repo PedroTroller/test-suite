@@ -14,7 +14,7 @@ class KeyList extends AbstractTest
         return $adapter instanceof CanListKeys;
     }
 
-    public function test(Adapter $adapter)
+    public function run(Adapter $adapter)
     {
         $fs    = $this->createFilesystem($adapter);
 

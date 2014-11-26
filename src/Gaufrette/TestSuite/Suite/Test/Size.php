@@ -19,7 +19,7 @@ class Size extends AbstractTest
     /**
      * {@inheritdoc}
      */
-    public function test(Adapter $adapter)
+    public function run(Adapter $adapter)
     {
         foreach ($this->getFiles() as $name) {
             $file  = $this->createFile($name);
