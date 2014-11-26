@@ -20,6 +20,7 @@ abstract class AbstractTest implements Test
                 $files[] = $file->getFilename();
             }
         }
+        sort($files);
 
         return $files;
     }
