@@ -17,7 +17,7 @@ class Registry
 
     public function __construct()
     {
-        $this->tests = [];
+        $this->tests = array();
 
         $this->tests[] = new Content;
         $this->tests[] = new MimeType;
