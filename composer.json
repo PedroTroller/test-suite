@@ -1,6 +1,7 @@
 {
     "name": "gaufrette/test-suite",
     "description": "Test suite for Gaufrette adapters",
+    "license": "MIT",
     "authors": [
         {
             "name": "KnpLabs",
@@ -12,8 +13,13 @@
         "gaufrette/core": "dev-master",
         "symfony/console": "~2.1"
     },
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
     "autoload": {
         "psr-0" : { "Gaufrette\\TestSuite": "src/" }
     },
-    "bin": ["bin/test-suite"]
+    "bin": [
+        "bin/test-suite"
+    ]
 }
