@@ -13,8 +13,8 @@ class Application extends BaseApplication
 {
     public function run(InputInterface $input = null, OutputInterface $output = null)
     {
-        $input  = $input  ?: new ArgvInput();
-        $output = $output ?: new ConsoleOutput();
+        $input  = null !== $input ? $input : new ArgvInput();
+        $output = null !== $output ? $output : new ConsoleOutput();
 
         $this->add(new RunCommand);
 

@@ -12,11 +12,11 @@ abstract class AbstractTest implements Test
 {
     public function getFiles()
     {
-        $files = array();
+        $files     = array();
         $directory = new \DirectoryIterator($this->getPath());
 
         foreach ($directory as $file) {
-            if ($file->isFile()) {
+            if (true === $file->isFile()) {
                 $files[] = $file->getFilename();
             }
         }

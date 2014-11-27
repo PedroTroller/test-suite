@@ -16,10 +16,10 @@ class KeyList extends AbstractTest
 
     public function run(Adapter $adapter)
     {
-        $fs    = $this->createFilesystem($adapter);
+        $fs = $this->createFilesystem($adapter);
 
         foreach ($this->getFiles() as $name) {
-            $file  = $this->createFile($name);
+            $file = $this->createFile($name);
 
             $fs->save($file);
         }
