@@ -8,6 +8,7 @@
         }
     ],
     "require": {
+        "php": ">=5.3.3",
         "gaufrette/core": "dev-master",
         "symfony/console": "~2.1"
     },
