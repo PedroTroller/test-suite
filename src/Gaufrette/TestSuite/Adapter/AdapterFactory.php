@@ -10,4 +10,11 @@ interface AdapterFactory
      * @return Gaufrette\Core\Adapter
      */
     public function create();
+
+    /**
+     * Call after tests
+     *
+     * @return void
+     */
+    public function destroy();
 }

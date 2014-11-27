@@ -71,6 +71,7 @@ class RunCommand extends Command
             $output->writeln('');
             $adapter = $factory->create();
             $result  = $this->runTest($test, $adapter, $output);
+            $factory->destroy();
 
             $exit = true === $result ? $exit : 1;
         }
