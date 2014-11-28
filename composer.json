@@ -19,6 +19,9 @@
     "autoload": {
         "psr-0" : { "Gaufrette\\TestSuite": "src/" }
     },
+    "config": {
+        "bin-dir": "bin"
+    },
     "bin": [
         "bin/test-suite"
     ]

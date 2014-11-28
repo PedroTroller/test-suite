@@ -31,14 +31,14 @@ class MimeType extends AbstractTest
 
             if ($file->getMimeType() !== $clone->getMimeType()) {
 
-                throw new FailureException(sprintf('Mime type not equals, %s expected, %s given', $file->getMimeType(), $clone->getMimeType()));
+                throw new FailureException('MimeType', $file->getMimeType(), $clone->getMimeType());
             }
 
             $clone = $fs->get($name);
 
             if ($file->getMimeType() !== $clone->getMimeType()) {
 
-                throw new FailureException(sprintf('Mime type not equals, %s expected, %s given', $file->getMimeType(), $clone->getMimeType()));
+                throw new FailureException('MimeType', $file->getMimeType(), $clone->getMimeType());
             }
         }
     }

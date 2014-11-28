@@ -4,8 +4,13 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\Core\File\File;
-use Gaufrette\Core\File\FileFactory;
-use Gaufrette\Core\Filesystem;
+use Gaufrette\Core\File\FileFactory\DefaultFileFactory;
+use Gaufrette\Core\Filesystem\DefaultFilesystem;
+use Gaufrette\Core\Operator\ContentOperator;
+use Gaufrette\Core\Operator\FileOperator;
+use Gaufrette\Core\Operator\MetadataOperator;
+use Gaufrette\Core\Operator\MimeTypeOperator;
+use Gaufrette\Core\Operator\SizeOperator;
 use Gaufrette\TestSuite\Suite\Test;
 
 abstract class AbstractTest implements Test
@@ -47,7 +52,15 @@ abstract class AbstractTest implements Test
 
     public function createFilesystem(Adapter $adapter)
     {
-        return new Filesystem($adapter, new FileFactory);
+        $fs = new DefaultFilesystem($adapter, new DefaultFileFactory);
+
+        $fs->addOperator(new ContentOperator());
+        $fs->addOperator(new SizeOperator());
+        $fs->addOperator(new MetadataOperator());
+        $fs->addOperator(new MimeTypeOperator());
+        $fs->addOperator(new FileOperator());
+
+        return $fs;
     }
 
     private function getPath()

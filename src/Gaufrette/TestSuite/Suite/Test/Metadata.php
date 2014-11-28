@@ -30,14 +30,14 @@ class Metadata extends AbstractTest
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
 
-                throw new FailureException(sprintf('Metadata not equals, %s expected, %s given', $file->getMetadata(), $clone->getMetadata()));
+                throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
 
             $clone = $fs->get($name);
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
 
-                throw new FailureException(sprintf('Metadata not equals, %s expected, %s given', $file->getMetadata(), $clone->getMetadata()));
+                throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
 
             $metadata = array_merge($clone->getMetadata(), array('client' => 1, 'active' => true, 'legend' => 'the_legend' ));
@@ -49,7 +49,7 @@ class Metadata extends AbstractTest
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
 
-                throw new FailureException(sprintf('Metadata not equals, %s expected, %s given', $file->getMetadata(), $clone->getMetadata()));
+                throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
         }
     }

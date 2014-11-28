@@ -31,14 +31,14 @@ class Content extends AbstractTest
 
             if ($clone->getContent() !== $file->getContent()) {
 
-                throw new FailureException('Content not equals');
+                throw new FailureException('Content', $file->getContent(), $clone->getContent());
             }
 
             $clone = $fs->get($name);
 
             if ($clone->getContent() !== $file->getContent()) {
 
-                throw new FailureException('Content not equals');
+                throw new FailureException('Content', $file->getContent(), $clone->getContent());
             }
         }
     }

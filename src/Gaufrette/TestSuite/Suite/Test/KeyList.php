@@ -26,11 +26,7 @@ class KeyList extends AbstractTest
 
         if ($adapter->listKeys() !== $this->getFiles()) {
 
-            throw new FailureException(sprintf(
-                "Expected keys \"%s\", \n Your adapter returns \"%s\"",
-                implode('", "', $this->getFiles()),
-                implode('", "', $adapter->listKeys())
-            ));
+            throw new FailureException('Key list', $this->getFiles(), $adapter->getFiles());
         }
     }
 
