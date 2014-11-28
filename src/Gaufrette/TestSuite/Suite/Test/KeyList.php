@@ -36,6 +36,6 @@ class KeyList extends AbstractTest
 
     public function getSentence()
     {
-        return 'File content';
+        return 'File list';
     }
 }
