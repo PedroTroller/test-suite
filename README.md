@@ -23,13 +23,18 @@ class MyFactory implements AdapterFactory
     {
         return new LocalAdapter('../my-path');
     }
+
+    function destroy()
+    {
+        //If you have to do something after tests
+    }
 }
 ```
 
 Then, just launch the `test-suite` command with the class of your factory as argument.
 
 ```bash
-./bin/test-suite MyNamespace/AdapterFactory
+./bin/test-suite run MyNamespace/AdapterFactory
 ```
 
 ##Result
