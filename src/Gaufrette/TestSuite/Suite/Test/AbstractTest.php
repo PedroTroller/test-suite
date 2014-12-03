@@ -8,6 +8,8 @@ use Gaufrette\Core\File\FileFactory\DefaultFileFactory;
 use Gaufrette\Core\Filesystem\DefaultFilesystem;
 use Gaufrette\Core\Operator\ContentOperator;
 use Gaufrette\Core\Operator\FileOperator;
+use Gaufrette\Core\Operator\LastAccessOperator;
+use Gaufrette\Core\Operator\LastModificationOperator;
 use Gaufrette\Core\Operator\MetadataOperator;
 use Gaufrette\Core\Operator\MimeTypeOperator;
 use Gaufrette\Core\Operator\SizeOperator;
@@ -46,6 +48,8 @@ abstract class AbstractTest implements Test
         $file->setContent($content);
         $file->setMimeType($info->buffer($content));
         $file->setSize(filesize($path));
+        $file->setLastAccess(new \DateTime('now', new \DateTimeZone("UTC")));
+        $file->setLastModification(new \DateTime('-1 day', new \DateTimeZone("UTC")));
 
         return $file;
     }
@@ -59,6 +63,8 @@ abstract class AbstractTest implements Test
         $fs->addOperator(new MetadataOperator());
         $fs->addOperator(new MimeTypeOperator());
         $fs->addOperator(new FileOperator());
+        $fs->addOperator(new LastAccessOperator());
+        $fs->addOperator(new LastModificationOperator());
 
         return $fs;
     }

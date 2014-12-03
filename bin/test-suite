@@ -6,8 +6,23 @@ function includeIfExists($file)
     return file_exists($file) ? include $file : null;
 }
 
-if ((!$loader = includeIfExists(__DIR__.'/../vendor/autoload.php')) && (!$loader = includeIfExists(__DIR__.'/../../../autoload.php'))) {
+$autoloads = array(
+    sprintf('%s/../vendor/autoload.php', __DIR__),
+    sprintf('%s/../../../autoload.php', __DIR__),
+    sprintf('%s/../autoload.php', __DIR__),
+);
 
+$loaded = false;
+
+foreach ($autoloads as $autoload) {
+    $loaded = null === includeIfExists($autoload) ? $loaded : true;
+
+    if (true === $loaded) {
+        break;
+    }
+}
+
+if (false === $loaded) {
     throw new \Exception('Can\'t find autoload');
 }
 

@@ -13,22 +13,49 @@ class FailureException extends \Exception
      */
     public function __construct($part, $expected, $real)
     {
-        if (true === is_string($expected) && 100 < strlen($expected)) {
-            $expected = sprintf('string<%d>', strlen($expected));
+        parent::__construct(sprintf(
+            '%s not equals, %s ecpected, %s given',
+            ucfirst($part),
+            $this->valueToString($expected),
+            $this->valueToString($real)
+        ));
+    }
+
+    /**
+     * @param mixed $value
+     *
+     * @return string
+     */
+    private function valueToString($value)
+    {
+        if (true === is_string($value)) {
+            if (100 < strlen($value)) {
+
+                return sprintf('string<%d>', strlen($value));
+            }
+
+            return $value;
         }
 
-        if (true === is_string($real) && 100 < strlen($real)) {
-            $real = sprintf('string<%d>', strlen($real));
+        if (true === is_scalar($value)) {
+
+            return (string) $value;
         }
 
-        if (true === is_array($expected)) {
-            $expected = sprintf('[%s]', implode(', ', $expected));
+        if (true === is_array($value)) {
+            $value = array_map(function ($e) { return $this->valueToString($e); }, $value);
+
+            return sprintf('[ %s ]', implode(', ', $value));
         }
 
-        if (true === is_array($real)) {
-            $real = sprintf('[%s]', implode(', ', $real));
+        if (true === ($value instanceof \DateTime)) {
+
+            return $value->format('"r"');
         }
 
-        parent::__construct(sprintf('%s not equals, %s ecpected, %s given', ucfirst($part), $expected, $real));
+        if (true === is_object($value)) {
+
+            return get_class($value);
+        }
     }
 }
