@@ -43,7 +43,8 @@ class FailureException extends \Exception
         }
 
         if (true === is_array($value)) {
-            $value = array_map(function ($e) { return $this->valueToString($e); }, $value);
+            $exception = $this;
+            $value     = array_map(function ($e) use ($exception) { return $exception->valueToString($e); }, $value);
 
             return sprintf('[ %s ]', implode(', ', $value));
         }
