@@ -3,6 +3,7 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
+use Gaufrette\Core\Behavior\Guesser;
 use Gaufrette\Core\File\File;
 use Gaufrette\Core\File\FileFactory\DefaultFileFactory;
 use Gaufrette\Core\Filesystem\DefaultFilesystem;
@@ -17,7 +18,20 @@ use Gaufrette\TestSuite\Suite\Test;
 
 abstract class AbstractTest implements Test
 {
-    public function getFiles()
+    /**
+     * @param Adapter $adapter
+     * @param string $behavior
+     *
+     * @return boolean
+     */
+    protected function adapterHasBehavior(Adapter $adapter, $behavior)
+    {
+        $guesser = new Guesser;
+
+        return $guesser->adapterHasBehavior($adapter, $behavior);
+    }
+
+    protected function getFiles()
     {
         $files     = array();
         $directory = new \DirectoryIterator($this->getPath());
@@ -32,12 +46,12 @@ abstract class AbstractTest implements Test
         return $files;
     }
 
-    public function getFilepath($file)
+    protected function getFilepath($file)
     {
         return sprintf('%s%s', $this->getPath(), $file);
     }
 
-    public function createFile($name)
+    protected function createFile($name)
     {
         $file = new File($name);
 
@@ -54,7 +68,7 @@ abstract class AbstractTest implements Test
         return $file;
     }
 
-    public function createFilesystem(Adapter $adapter)
+    protected function createFilesystem(Adapter $adapter)
     {
         $fs = new DefaultFilesystem($adapter, new DefaultFileFactory);
 

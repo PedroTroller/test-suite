@@ -3,7 +3,6 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\KnowsLastModification;
 use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
@@ -14,7 +13,7 @@ class LastModification extends AbstractTest
      */
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof KnowsLastModification;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\KnowsLastModification');
     }
 
     /**

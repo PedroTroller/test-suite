@@ -3,7 +3,6 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\CanListKeys;
 use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
@@ -11,7 +10,7 @@ class KeyList extends AbstractTest
 {
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof CanListKeys;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\CanListKeys');
     }
 
     public function run(Adapter $adapter)

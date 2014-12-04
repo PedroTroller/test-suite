@@ -3,7 +3,6 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\KnowsContent;
 use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
@@ -14,7 +13,7 @@ class Content extends AbstractTest
      */
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof KnowsContent;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\KnowsContent');
     }
 
     /**

@@ -3,7 +3,6 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\KnowsSize;
 use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
@@ -14,7 +13,7 @@ class Size extends AbstractTest
      */
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof KnowsSize;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\KnowsSize');
     }
 
     /**

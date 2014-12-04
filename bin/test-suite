@@ -7,8 +7,8 @@ function includeIfExists($file)
 }
 
 $autoloads = array(
-    sprintf('%s/../vendor/autoload.php', __DIR__),
     sprintf('%s/../../../autoload.php', __DIR__),
+    sprintf('%s/../vendor/autoload.php', __DIR__),
     sprintf('%s/../autoload.php', __DIR__),
 );
 

@@ -3,8 +3,8 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\KnowsMetadata;
 use Gaufrette\TestSuite\Exception\FailureException;
+use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class Metadata extends AbstractTest
 {
@@ -13,7 +13,7 @@ class Metadata extends AbstractTest
      */
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof KnowsMetadata;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\KnowsMetadata');
     }
 
     /**

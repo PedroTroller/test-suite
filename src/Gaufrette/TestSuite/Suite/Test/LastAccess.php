@@ -3,7 +3,6 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\KnowsLastAccess;
 use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
@@ -14,7 +13,7 @@ class LastAccess extends AbstractTest
      */
     public function supports(Adapter $adapter)
     {
-        return $adapter instanceof KnowsLastAccess;
+        return $this->adapterHasBehavior($adapter, 'Gaufrette\Core\Adapter\KnowsLastAccess');
     }
 
     /**
