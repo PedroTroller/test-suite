@@ -28,7 +28,7 @@ class KeyList extends AbstractTest
             throw new FailureException('Key list', $this->getFiles(), $adapter->listKeys());
         }
 
-        $filtered = array_filter($this->getFiles(), function ($e) { return 0 === strpos($e, 'music'); });
+        $filtered = array_values(array_filter($this->getFiles(), function ($e) { return 0 === strpos($e, 'music'); }));
 
         if ($adapter->listKeys('music') !== $filtered) {
 
