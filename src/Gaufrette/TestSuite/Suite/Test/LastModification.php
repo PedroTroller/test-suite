@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class LastModification extends AbstractTest
 {
@@ -29,14 +28,12 @@ class LastModification extends AbstractTest
             $fs->save($clone);
 
             if ($clone->getLastModification() != $file->getLastModification()) {
-
                 throw new FailureException('Last Modification', $file->getLastModification(), $clone->getLastModification());
             }
 
             $clone = $fs->get($name);
 
             if ($clone->getLastModification() != $file->getLastModification()) {
-
                 throw new FailureException('Last Modification', $file->getLastModification(), $clone->getLastModification());
             }
         }

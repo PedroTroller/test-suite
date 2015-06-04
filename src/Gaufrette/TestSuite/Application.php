@@ -17,7 +17,7 @@ class Application extends BaseApplication
         $input  = null !== $input ? $input : new ArgvInput();
         $output = null !== $output ? $output : new ConsoleOutput();
 
-        $this->add(new RunCommand);
+        $this->add(new RunCommand());
 
         $this->configureIO($input, $output);
 

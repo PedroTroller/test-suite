@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class Size extends AbstractTest
 {
@@ -29,14 +28,12 @@ class Size extends AbstractTest
             $fs->save($clone);
 
             if ($file->getSize() !== $clone->getSize()) {
-
                 throw new FailureException('Size', $file->getSize(), $clone->getSize());
             }
 
             $clone = $fs->get($name);
 
             if ($file->getSize() !== $clone->getSize()) {
-
                 throw new FailureException('Size', $file->getSize(), $clone->getSize());
             }
         }

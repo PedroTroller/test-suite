@@ -14,18 +14,17 @@ interface Test
     public function supports(Adapter $adapter);
 
     /**
-     * Test the adapter
+     * Test the adapter.
      *
      * @param Adapter $adapter
      *
-     * @return void
      *
      * @throw Gaufrette\TestSuite\Exception\FailureException
      */
     public function run(Adapter $adapter);
 
     /**
-     * Get the sentence to display
+     * Get the sentence to display.
      *
      * @return string
      */

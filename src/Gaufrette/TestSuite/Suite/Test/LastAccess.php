@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class LastAccess extends AbstractTest
 {
@@ -29,14 +28,12 @@ class LastAccess extends AbstractTest
             $fs->save($clone);
 
             if ($clone->getLastAccess() != $file->getLastAccess()) {
-
                 throw new FailureException('Last Access', $file->getLastAccess(), $clone->getLastAccess());
             }
 
             $clone = $fs->get($name);
 
             if ($clone->getLastAccess() != $file->getLastAccess()) {
-
                 throw new FailureException('Last Access', $file->getLastAccess(), $clone->getLastAccess());
             }
         }

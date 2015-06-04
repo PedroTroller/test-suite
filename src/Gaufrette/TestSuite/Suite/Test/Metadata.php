@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class Metadata extends AbstractTest
 {
@@ -29,14 +28,12 @@ class Metadata extends AbstractTest
             $fs->save($clone);
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
-
                 throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
 
             $clone = $fs->get($name);
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
-
                 throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
 
@@ -48,7 +45,6 @@ class Metadata extends AbstractTest
             $clone = $fs->get($name);
 
             if ($file->getMetadata() !== $clone->getMetadata()) {
-
                 throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
         }

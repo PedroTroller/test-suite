@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class MimeType extends AbstractTest
 {
@@ -29,14 +28,12 @@ class MimeType extends AbstractTest
             $fs->save($clone);
 
             if ($file->getMimeType() !== $clone->getMimeType()) {
-
                 throw new FailureException('MimeType', $file->getMimeType(), $clone->getMimeType());
             }
 
             $clone = $fs->get($name);
 
             if ($file->getMimeType() !== $clone->getMimeType()) {
-
                 throw new FailureException('MimeType', $file->getMimeType(), $clone->getMimeType());
             }
         }
