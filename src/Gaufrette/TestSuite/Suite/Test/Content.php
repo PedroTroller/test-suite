@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Exception\FailureException;
-use Gaufrette\TestSuite\Suite\Test\AbstractTest;
 
 class Content extends AbstractTest
 {
@@ -29,14 +28,12 @@ class Content extends AbstractTest
             $fs->save($clone);
 
             if ($clone->getContent() !== $file->getContent()) {
-
                 throw new FailureException('Content', $file->getContent(), $clone->getContent());
             }
 
             $clone = $fs->get($name);
 
             if ($clone->getContent() !== $file->getContent()) {
-
                 throw new FailureException('Content', $file->getContent(), $clone->getContent());
             }
         }

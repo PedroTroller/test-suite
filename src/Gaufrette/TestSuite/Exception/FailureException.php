@@ -6,10 +6,8 @@ class FailureException extends \Exception
 {
     /**
      * @param string $part
-     * @param mixed $expected
-     * @param mixed $real
-     *
-     * @return void
+     * @param mixed  $expected
+     * @param mixed  $real
      */
     public function __construct($part, $expected, $real)
     {
@@ -30,7 +28,6 @@ class FailureException extends \Exception
     {
         if (true === is_string($value)) {
             if (100 < strlen($value)) {
-
                 return sprintf('string<%d>', strlen($value));
             }
 
@@ -38,7 +35,6 @@ class FailureException extends \Exception
         }
 
         if (true === is_scalar($value)) {
-
             return (string) $value;
         }
 
@@ -50,12 +46,10 @@ class FailureException extends \Exception
         }
 
         if (true === ($value instanceof \DateTime)) {
-
             return $value->format('"r"');
         }
 
         if (true === is_object($value)) {
-
             return get_class($value);
         }
     }

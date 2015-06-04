@@ -15,13 +15,13 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RunCommand extends Command
 {
     /**
-     * @var Registry $tests
+     * @var Registry
      */
     private $tests;
 
     public function __construct()
     {
-        $this->tests = new Registry;
+        $this->tests = new Registry();
 
         parent::__construct();
     }
@@ -47,21 +47,18 @@ class RunCommand extends Command
         $class = str_replace('/', '\\', $class);
 
         if (false === class_exists($class)) {
-
             throw new \Exception(sprintf('Class %s not found', $class));
         }
 
         $rfl = new \ReflectionClass($class);
 
         if (null !== $rfl->getConstructor() && 0 < $rfl->getConstructor()->getNumberOfRequiredParameters()) {
-
             throw new \Exception('Can\'t instanciate adapter factory %s, constructor shouldn\'t need required parameters');
         }
 
-        $factory = new $class;
+        $factory = new $class();
 
         if (false === $factory instanceof AdapterFactory) {
-
             throw new \Exception('Your adapter factory should implements Gaufrette\TestSuite\Adapter\AdapterFactory');
         }
 
@@ -81,10 +78,10 @@ class RunCommand extends Command
     }
 
     /**
-     * Run a test and print it's result
+     * Run a test and print it's result.
      *
-     * @param Test $test
-     * @param Adapter $adapter
+     * @param Test            $test
+     * @param Adapter         $adapter
      * @param OutputInterface $output
      *
      * @return boolean

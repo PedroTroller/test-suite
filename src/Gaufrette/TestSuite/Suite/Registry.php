@@ -13,7 +13,7 @@ use Gaufrette\TestSuite\Suite\Test\Size;
 class Registry
 {
     /**
-     * @var Test[] $tests
+     * @var Test[]
      */
     private $tests;
 
@@ -21,13 +21,13 @@ class Registry
     {
         $this->tests = array();
 
-        $this->tests[] = new Content;
-        $this->tests[] = new KeyList;
-        $this->tests[] = new LastAccess;
-        $this->tests[] = new LastModification;
-        $this->tests[] = new Metadata;
-        $this->tests[] = new MimeType;
-        $this->tests[] = new Size;
+        $this->tests[] = new Content();
+        $this->tests[] = new KeyList();
+        $this->tests[] = new LastAccess();
+        $this->tests[] = new LastModification();
+        $this->tests[] = new Metadata();
+        $this->tests[] = new MimeType();
+        $this->tests[] = new Size();
     }
 
     /**

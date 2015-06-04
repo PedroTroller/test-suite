@@ -20,13 +20,13 @@ abstract class AbstractTest implements Test
 {
     /**
      * @param Adapter $adapter
-     * @param string $behavior
+     * @param string  $behavior
      *
      * @return boolean
      */
     protected function adapterHasBehavior(Adapter $adapter, $behavior)
     {
-        $guesser = new Guesser;
+        $guesser = new Guesser();
 
         return $guesser->adapterHasBehavior($adapter, $behavior);
     }
@@ -70,7 +70,7 @@ abstract class AbstractTest implements Test
 
     protected function createFilesystem(Adapter $adapter)
     {
-        $fs = new DefaultFilesystem($adapter, new DefaultFileFactory);
+        $fs = new DefaultFilesystem($adapter, new DefaultFileFactory());
 
         $fs->addOperator(new ContentOperator());
         $fs->addOperator(new SizeOperator());
@@ -85,6 +85,6 @@ abstract class AbstractTest implements Test
 
     private function getPath()
     {
-        return dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/fixtures/';
+        return dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/fixtures/';
     }
 }
