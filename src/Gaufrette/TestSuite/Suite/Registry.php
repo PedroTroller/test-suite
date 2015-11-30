@@ -13,7 +13,7 @@ use Gaufrette\TestSuite\Suite\Test\Size;
 class Registry
 {
     /**
-     * @var Test[]
+     * @type Test[]
      */
     private $tests;
 

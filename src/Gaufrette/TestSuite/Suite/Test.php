@@ -9,7 +9,7 @@ interface Test
     /**
      * @param Adapter $adapter
      *
-     * @return boolean
+     * @return bool
      */
     public function supports(Adapter $adapter);
 

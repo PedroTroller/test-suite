@@ -22,7 +22,7 @@ abstract class AbstractTest implements Test
      * @param Adapter $adapter
      * @param string  $behavior
      *
-     * @return boolean
+     * @return bool
      */
     protected function adapterHasBehavior(Adapter $adapter, $behavior)
     {
@@ -62,8 +62,8 @@ abstract class AbstractTest implements Test
         $file->setContent($content);
         $file->setMimeType($info->buffer($content));
         $file->setSize(filesize($path));
-        $file->setLastAccess(new \DateTime('now', new \DateTimeZone("UTC")));
-        $file->setLastModification(new \DateTime('-1 day', new \DateTimeZone("UTC")));
+        $file->setLastAccess(new \DateTime('now', new \DateTimeZone('UTC')));
+        $file->setLastModification(new \DateTime('-1 day', new \DateTimeZone('UTC')));
 
         return $file;
     }
@@ -85,6 +85,6 @@ abstract class AbstractTest implements Test
 
     private function getPath()
     {
-        return dirname(dirname(dirname(dirname(dirname(__DIR__))))).'/fixtures/';
+        return dirname(dirname(dirname(dirname(dirname(__DIR__))))) . '/fixtures/';
     }
 }
