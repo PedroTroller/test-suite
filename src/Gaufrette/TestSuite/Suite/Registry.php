@@ -2,6 +2,7 @@
 
 namespace Gaufrette\TestSuite\Suite;
 
+use Gaufrette\TestSuite\Suite\Test\Configuration;
 use Gaufrette\TestSuite\Suite\Test\Content;
 use Gaufrette\TestSuite\Suite\Test\KeyList;
 use Gaufrette\TestSuite\Suite\Test\LastAccess;
@@ -21,6 +22,7 @@ class Registry
     {
         $this->tests = array();
 
+        $this->tests[] = new Configuration();
         $this->tests[] = new Content();
         $this->tests[] = new KeyList();
         $this->tests[] = new LastAccess();
