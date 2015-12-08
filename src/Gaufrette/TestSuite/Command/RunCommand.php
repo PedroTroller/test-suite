@@ -4,7 +4,6 @@ namespace Gaufrette\TestSuite\Command;
 
 use Gaufrette\Core\Adapter;
 use Gaufrette\TestSuite\Adapter\AdapterFactory;
-use Gaufrette\TestSuite\Exception\FailureException;
 use Gaufrette\TestSuite\Suite\Registry;
 use Gaufrette\TestSuite\Suite\Test;
 use Symfony\Component\Console\Command\Command;
@@ -100,7 +99,7 @@ class RunCommand extends Command
             $output->writeln(sprintf('<bg=green;fg=black> %s </bg=green;fg=black>', 'OKAY'));
 
             return true;
-        } catch (FailureException $ex) {
+        } catch (\Exception $ex) {
             $output->writeln(sprintf('<error> %s </error>', 'ERROR'));
             $output->writeln('');
             $output->writeln(sprintf('<fg=red> %s </fg=red>', $ex->getMessage()));
