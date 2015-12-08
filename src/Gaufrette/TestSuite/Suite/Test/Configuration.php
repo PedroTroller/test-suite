@@ -3,7 +3,7 @@
 namespace Gaufrette\TestSuite\Suite\Test;
 
 use Gaufrette\Core\Adapter;
-use Gaufrette\Core\Adapter\Configuration;
+use Gaufrette\Core\Adapter\Configuration as ConfigurationInterface;
 
 class Configuration extends AbstractTest
 {
@@ -32,7 +32,7 @@ class Configuration extends AbstractTest
 
         $instance = new $configuration();
 
-        if (false === $instance instanceof Configuration) {
+        if (false === $instance instanceof ConfigurationInterface) {
             throw new \Exception(sprintf(
                 'Configuration %s have to be an instance of Configuration',
                 $configuration,
@@ -59,7 +59,7 @@ class Configuration extends AbstractTest
         $intersect = array_intersect($instance->getRequiredOptions(), $instance->getOptionalOptions());
 
         if (false === empty($intersect)) {
-            throw new \Exception(sprintf('Options [%s] are both optional and required.', explode(', '$intersect)));
+            throw new \Exception(sprintf('Options [%s] are both optional and required.', explode(', ', $intersect)));
         }
     }
 
