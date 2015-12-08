@@ -37,7 +37,7 @@ class Metadata extends AbstractTest
                 throw new FailureException('Metadata', $file->getMetadata(), $clone->getMetadata());
             }
 
-            $metadata = array_merge($clone->getMetadata(), array('client' => 1, 'active' => true, 'legend' => 'the_legend' ));
+            $metadata = array_merge($clone->getMetadata(), array('client' => 1, 'active' => true, 'legend' => 'the_legend'));
 
             $file->setMetadata($metadata);
 

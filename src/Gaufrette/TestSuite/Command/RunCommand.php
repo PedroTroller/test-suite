@@ -15,7 +15,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class RunCommand extends Command
 {
     /**
-     * @var Registry
+     * @type Registry
      */
     private $tests;
 
@@ -34,8 +34,7 @@ class RunCommand extends Command
         $this
             ->setName('run')
             ->setDescription('Launch all suites')
-            ->addArgument('factory', InputArgument::REQUIRED, 'Your adapter factory class (should implements Gaufrette\TestSuite\Adapter\AdapterFactory)')
-        ;
+            ->addArgument('factory', InputArgument::REQUIRED, 'Your adapter factory class (should implements Gaufrette\TestSuite\Adapter\AdapterFactory)');
     }
 
     /**
@@ -84,7 +83,7 @@ class RunCommand extends Command
      * @param Adapter         $adapter
      * @param OutputInterface $output
      *
-     * @return boolean
+     * @return bool
      */
     private function runTest(Test $test, Adapter $adapter, OutputInterface $output)
     {
